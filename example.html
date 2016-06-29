@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>bindQuery</title>
+        <link href="css/font-awesome.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+        <link href="css/main.css" rel="stylesheet">
+        <link href="css/normalize.css" rel="stylesheet">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bindQuery.js"></script> <!-- bindQuery plugin -->
+    </head>
+    <body>
+        
+        <div id = "head">
+            <img src = "img/logoShadowny.png" style = "max-width: 150px;">
+            <div>bindQuery [ beta ]</div>
+            <div id = "intro">
+
+
+                bindQuery is a Jquery plugin which provides a feature of Angular, this feature is ng-repeat that we use to bind our Json data to HTML.
+
+            </div>
+        </div>
+        
+        <div id = "all" class = "fixold">
+
+
+            <div id = "firstExample" class = "examples fixWidth">
+                <h2>Generate Json data: </h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Country</th>
+                            <th>Population</th>
+                        </tr>
+                    </thead>
+                    <tbody id = "Population">
+                        <tr>
+                            <td align="center" valign="top">
+                                $Rank$
+                            </td>
+                            <td align="left" valign="bottom">
+                                $Country$
+                            </td>
+                            <td align="right" valign="bottom">
+                                $Population$
+                            </td>
+                        </tr>
+                    </tbody>
+
+
+                </table>
+            </div>
+            <br/>
+            <div class = "examples fixWidth">
+                <h2>Generate Json data order by Country ascending : </h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Country</th>
+                        <th>Population</th>
+                    </tr>
+                    </thead>
+                    <tbody id = "PopulationAscending">
+                    <tr>
+                        <td align="center" valign="top">
+                            $Rank$
+                        </td>
+                        <td align="left" valign="bottom">
+                            $Country$
+                        </td>
+                        <td align="right" valign="bottom">
+                            $Population$
+                        </td>
+                    </tr>
+                    </tbody>
+
+
+                </table>
+            </div>
+            <br/>
+            <div class = "examples fixWidth">
+                <h2>Generate Json data order by Rank descending : </h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Country</th>
+                        <th>Population</th>
+                    </tr>
+                    </thead>
+                    <tbody id = "PopulationDescending">
+                    <tr>
+                        <td align="center" valign="top">
+                            $Rank$
+                        </td>
+                        <td align="left" valign="bottom">
+                            $Country$
+                        </td>
+                        <td align="right" valign="bottom">
+                            $Population$
+                        </td>
+                    </tr>
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+        <br/>
+        <div id = "footer">
+            <div class = "tbl fixold  sm-sive xs-sive vertiMid">
+                <div>
+                    bindQuery is released under the <a href = "https://en.wikipedia.org/wiki/MIT_License" target = "_blink">MIT License</a>, feel free to use.
+                    <br/>
+                    Created by <a href = "mailto:phoneticem@gmail.com" target = "_blink">Mohammad Mahdi Mohammadi</a>
+                </div>
+                <div>
+                    <!-- Place this tag where you want the button to render. -->
+                    <a aria-label="Download ntkme/github-buttons on GitHub" data-style="mega" href="https://github.com/phoneticem/bindQuery/archive/master.zip" class="github-button">Download</a>
+                    <!-- Place this tag where you want the button to render. -->
+                    <a aria-label="Watch ntkme/github-buttons on GitHub" data-count-aria-label="# watchers on GitHub" data-count-api="/repos/phoneticem/bindQuery#subscribers_count" data-count-href="/phoneticem/bindQuery/watchers" data-style="mega" data-icon="octicon-eye" href="https://github.com/phoneticem/bindQuery" class="github-button">Watch</a>
+                </div>
+            </div>
+        </div>
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <script type="text/javascript">
+            var json = '{"Population": [{"Rank" : "1", "Country" : "China", "Population" : "1,367,485,388"},{"Rank" : "2", "Country" : "India", "Population" : "1,251,695,584"},{"Rank" : "3", "Country" : "United States", "Population" : "321,368,864"}, {"Rank" : "4", "Country" : "Indonesia", "Population" : "255,993,674"}]}';
+            var obj = $.parseJSON( json );
+            $("#Population").bindQuery({
+                data: obj.Population
+            });
+
+            var obj = $.parseJSON( json );
+            $("#PopulationAscending").bindQuery({
+                data: obj.Population,
+                sort: "Country",
+                ascending: true
+            });
+
+            obj = $.parseJSON( json );
+            $("#PopulationDescending").bindQuery({
+                data: obj.Population,
+                sort: "Rank",
+                ascending: false
+            });
+            
+        </script>
+    </body>
+</html>
